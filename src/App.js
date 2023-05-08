@@ -1,14 +1,14 @@
 import React, {useState } from 'react';
 import './App.css'
 import Select from 'react-select';
-import { Helmet } from 'react-helmet';
+
 
 function App() {
   const [ message, setMessage ] = useState('')
   const [ response, setResponse ] = useState('')
   const [ isLoading, setIsLoading ] = useState(false)
-  const [questions, setQuestions] = useState(0);
-  const [difficulty, setDifficulty] = useState(0);
+  const [questions, setQuestions] = useState(1);
+  const [difficulty, setDifficulty] = useState(2);
   const [selectedOption, setSelectedOption] = useState('');
 
   const handleSubmit = (e) => {
@@ -34,11 +34,11 @@ function App() {
   }
 
   const dropdownOptions = [
-    { value: 'Grade 8', label: 'Grade 8' },
-    { value: 'Grade 9', label: 'Grade 9' },
-    { value: 'Grade 10', label: 'Grade 10' },
-    { value: 'Grade 11', label: 'Grade 11' },
-    { value: 'Grade 12', label: 'Grade 12' },
+    { value: '8', label: '8' },
+    { value: '9', label: '9' },
+    { value: '10', label: '10' },
+    { value: '11', label: '11' },
+    { value: '12', label: '12' },
   ];
 
 
@@ -50,6 +50,7 @@ function App() {
       boxShadow: 'none',
       color: 'white',
       width: '200px',
+      cursor: 'pointer',
     }),
     valueContainer: (provided) => ({
       ...provided,
@@ -63,7 +64,9 @@ function App() {
       ...provided,
       backgroundColor: state.isSelected ? '#333' : '#222',
       color: 'white',
-      border: 'none'
+      border: 'none',
+      cursor: 'pointer',
+
     }),
     singleValue: (provided) => ({
       ...provided,
@@ -76,10 +79,6 @@ function App() {
   
   return (
     <div className='App'>
-      <Helmet>
-        <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
-        <script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
-      </Helmet>
       <header>
         <h1>Math Test Maker</h1>
       </header>
@@ -97,7 +96,7 @@ function App() {
         <div className='spacer'>
         <span>Number of questions</span>
         <input
-        placeholder='Number of questions'
+          placeholder='Number of questions'
           type="range"
           min={0}
           max={10}
@@ -130,10 +129,9 @@ function App() {
         {isLoading ? 
           <div className="loading">
           <div className="loader"></div>
-          <p>Loading...</p>
         </div>
         :<div className='response'>{response}</div>}
-  
+
         <footer>
         <p>&copy; {new Date().getFullYear()} Your Website. All rights reserved.</p>
       </footer>

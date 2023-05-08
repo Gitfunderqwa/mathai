@@ -25,11 +25,11 @@ app.post('/', async (req, res) => {
 
     const response = await openai.createCompletion({
         model: "text-davinci-003",
-        prompt: `You are a advanced math model with a purpose to make math questions. 
+        prompt: `You are a advanced math model with a purpose to make math questions in Latex. 
         Your task is to make ${questions} question${(questions > 1 ? '' : 's')} on the topic of ${message}. 
         Your questions level of difficulty is determined by the grade and this questions grade is ${selectedOption}. 
-        Your questions must include mathematical equations that have been tested in schools ranging in difficulties from 1 being easy and 4 benig extremely difficult. 
-        This questions difficulty is ${difficulty}. The questions must always be written in Latex code.`,
+        Your questions must include mathematical equations that have been tested in schools ranging in difficulties from 1 to 4.
+        This questions difficulty is ${difficulty}.`,
         max_tokens: 100,
         temperature: 0,
       });

@@ -1,0 +1,158 @@
+body {
+  background-color: #121212;
+  color: #ffffff;
+  margin: 0;
+  padding: 0;
+  font-family: Arial, sans-serif;
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+}
+
+.App {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  flex: 1 0 auto;
+  text-align: center;
+}
+
+header {
+  margin-bottom: 20px;
+}
+
+h1 {
+  color: #ffffff;
+}
+
+.hero {
+  background-color: #333333;
+  padding: 40px;
+  border-radius: 8px;
+  margin-bottom: 20px;
+}
+
+h2,
+p {
+  color: #ffffff;
+}
+
+main {
+  flex: 1 0 auto;
+}
+
+form textarea {
+  background-color: #1e1e1e;
+  color: #ffffff;
+  border: none;
+  width: 100%;
+  height: 50px;
+  padding: 10px;
+  margin-bottom: 20px;
+  font-size: 16px;
+  border-radius: 4px;
+}
+
+/* form button {
+  background-color: #ffffff;
+  color: #121212;
+  border: none;
+  padding: 10px 20px;
+  font-size: 16px;
+  border-radius: 4px;
+  cursor: pointer;
+  margin: 1rem;
+  width: 200px;
+} */
+
+.response {
+  background-color: #333333;
+  color: #ffffff;
+  padding: 10px;
+  border-radius: 4px;
+  margin: 30;
+}
+
+footer {
+  background-color: #1e1e1e;
+  padding: 0.5rem;
+  color: #ffffff;
+  flex-shrink: 0;
+  margin-top: 1rem;
+}
+
+
+/* ...Existing styles... */
+
+.loading {
+  margin-top: 30px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+.loader {
+  border: 3px solid #f3f3f3;
+  border-top: 3px solid #3498db;
+  border-radius: 50%;
+  width: 15px;
+  height: 15px;
+  animation: spin 2s linear infinite;
+  margin-bottom: 10px;
+}
+
+@keyframes spin {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
+}
+
+/* ...Existing styles... */
+
+form {
+  margin-bottom: 20px;
+  width: 50%;
+}
+
+input[type="range"] {
+  width: 200PX;
+}
+
+.button5{
+   display:inline-block;
+   padding:0.46em 1.6em;
+   border:0.1em solid #000000;
+   margin:0 0.2em 0.2em 0;
+   border-radius:0.5em;
+   box-sizing: border-box;
+   text-decoration:none;
+   font-weight:300;
+   font-size: 18px;
+   color:#000000;
+   text-shadow: 0 0.04em 0.04em rgba(0,0,0,0.35);
+   background-color:#37a8ca;
+   text-align:center;
+   transition: all 0.15s;
+   width: 200px;
+   margin-top: 1rem;
+  }
+
+.button5:hover{
+   text-shadow: 0 0 2em rgba(255,255,255,1);
+   color:#37a8ca;
+   border-color:#37a8ca;
+   background-color:#121212;
+   border-radius:0.5em;
+  }
+
+  @media all and (max-width:30em){
+   .button5{
+   display:block;
+   margin:0.4em auto;
+   }
+  }

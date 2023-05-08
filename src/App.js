@@ -2,14 +2,13 @@ import React, {useState } from 'react';
 import './App.css'
 import Select from 'react-select';
 
-
 function App() {
   const [ message, setMessage ] = useState('')
   const [ response, setResponse ] = useState('')
   const [ isLoading, setIsLoading ] = useState(false)
-  const [questions, setQuestions] = useState(1);
-  const [difficulty, setDifficulty] = useState(2);
-  const [selectedOption, setSelectedOption] = useState('');
+  const [ questions, setQuestions] = useState(1);
+  const [ difficulty, setDifficulty] = useState('');
+  const [ selectedOption, setSelectedOption] = useState('');
 
   const handleSubmit = (e) => {
     e.preventDefault()
@@ -39,6 +38,14 @@ function App() {
     { value: '10', label: '10' },
     { value: '11', label: '11' },
     { value: '12', label: '12' },
+  ];
+
+  const dropdownDifficultyOptions = [
+    { value: 'easy', label: 'easy' },
+    { value: 'medium', label: 'medium' },
+    { value: 'difficult', label: 'difficult' },
+    { value: 'challenging', label: 'challenging' },
+    { value: 'impossible', label: 'impossible' },
   ];
 
 
@@ -104,15 +111,12 @@ function App() {
           onChange={(e) => setQuestions(Number(e.target.value))}
         />
         <span>{questions}</span>
-        <span>Level of difficulty</span>
-        <input
-          type="range"
-          min={0}
-          max={4}
+        <Select
           value={difficulty}
-          onChange={(e) => setDifficulty(Number(e.target.value))}
+          onChange={(option) => setDifficulty(option)}
+          options={dropdownDifficultyOptions}
+          styles={customStyles}
         />
-        <span>{difficulty}</span>
         </div>
         <Select
           value={selectedOption}
@@ -120,6 +124,7 @@ function App() {
           options={dropdownOptions}
           styles={customStyles}
         />
+        
 
           <button type='submit' class="button5">
             Submit
@@ -130,7 +135,8 @@ function App() {
           <div className="loading">
           <div className="loader"></div>
         </div>
-        :<div className='response'>{response}</div>}
+        :<div className='response'>{response.content}</div>}
+
 
         <footer>
         <p>&copy; {new Date().getFullYear()} Your Website. All rights reserved.</p>

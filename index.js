@@ -23,19 +23,31 @@ app.post('/', async (req, res) => {
     const {questions} = req.body
     const {selectedOption} = req.body
 
-    const response = await openai.createCompletion({
-        model: "text-davinci-003",
-        prompt: `You are a advanced math model with a purpose to make math questions in Latex. 
-        Your task is to make ${questions} question${(questions > 1 ? '' : 's')} on the topic of ${message}. 
-        Your questions level of difficulty is determined by the grade and this questions grade is ${selectedOption}. 
-        Your questions must include mathematical equations that have been tested in schools ranging in difficulties from 1 to 4.
-        This questions difficulty is ${difficulty}.`,
-        max_tokens: 100,
-        temperature: 0,
-      });
-      if(response.data.choices[0].text) {
+    const response = await openai.createChatCompletion({
+        model: "gpt-3.5-turbo",
+        messages: [{
+            "role":
+            "system",
+            "content":
+            "You can only write mathematical equations and functions using Latex code. You are tasked with making exam level questions. Ensure there is proper spacing between questions."
+          }, {
+            "role": "user",
+            "content": `I need a exam question for the South African IEB curriculum.`,
+          }, {
+            'role': 'assistant',
+            "content": "I will generate a test for the South african IEB curriculum in latex code, what would you like the test to be on? "
+          }, {
+            "role": "user",
+            "content": `I need a exam question on ${ message } for a grade ${selectedOption.value} South Africa student. Make the test level ${difficulty.value}. You can only write in latex code and include "\\" for space.`,
+          }, {
+            'role': 'assistant',
+            "content": "Question: "
+          }]
+    })
+    console.log(response.data.choices[0].message)
+      if(response.data.choices[0].message) {
         res.json({
-        message: response.data.choices[0].text
+        message: response.data.choices[0].message
     })}
 })
 
